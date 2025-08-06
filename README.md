@@ -4,7 +4,7 @@ Problem Statement  Complaint Management System with Chatbot Integration &amp; Ti
 
 ## 🔖 Problem Code: P-004  
 **Language:** Python with AI/ML  
-**Team:** VisionStack
+
 
 ---
 
