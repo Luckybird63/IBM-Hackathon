@@ -2,35 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Login</title>
+  <title>Register</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
   <div class="container mt-5">
-    <h2>Login</h2>
+    <h2>Register</h2>
+    <input id="name" class="form-control mb-2" placeholder="Name">
     <input id="email" class="form-control mb-2" placeholder="Email">
     <input id="password" type="password" class="form-control mb-2" placeholder="Password">
-    <button class="btn btn-success" onclick="login()">Login</button>
+    <button class="btn btn-primary" onclick="register()">Register</button>
   </div>
 
   <script>
-    async function login() {
+    async function register() {
+      const name = document.getElementById("name").value;
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
 
-      const res = await fetch("http://localhost:5000/api/auth/login", {
+      const res = await fetch("http://localhost:5000/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ name, email, password })
       });
 
       const data = await res.json();
       if (res.ok) {
-        localStorage.setItem("token", data.token);
-        alert("Login successful!");
-        window.location.href = "index.html";
+        alert("Registration successful!");
+        window.location.href = "login.html";
       } else {
-        alert("Login failed: " + data.message);
+        alert("Error: " + data.message);
       }
     }
   </script>
